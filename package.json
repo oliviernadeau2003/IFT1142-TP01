@@ -1,7 +1,8 @@
 {
   "name": "ift1142-tp01",
   "version": "1.0.0",
-  "main": "./app/src/main.js",
+  "main": "./app/src/app/main.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,8 @@
     "url": "https://github.com/oliviernadeau2003/IFT1142-TP01/issues"
   },
   "homepage": "https://github.com/oliviernadeau2003/IFT1142-TP01#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }

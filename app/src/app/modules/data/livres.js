@@ -1,4 +1,4 @@
-let tabLivres = [
+export const tabLivres = [
   {
     "id": 400,
     "titre": "Une aventure d'Astérix le gaulois. Le devin",
