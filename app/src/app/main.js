@@ -7,6 +7,22 @@
 import { question } from 'readline-sync';
 import { tabLivres as livres } from './modules/data/livres.js';
 
+const menu = () => {
+    let choix;
+    do {
+        console.log('\n     GESTION DES LIVRES');
+        console.log('   1. Lister tous les livres');
+        console.log('   2. Ajouter un livre');
+        console.log('   3. Modifier un livre');
+        console.log('   4. Supprimer un livre');
+        console.log('   5. Rechercher des livres');
+        console.log('   6. Quitter');
+
+        choix = parseInt(question('Entrez votre choix [1-6] : '));
+    } while (choix < 0 || choix > 6);
+    return choix;
+};
+
 function main() {
     let choix;
     do {
@@ -30,21 +46,5 @@ function main() {
     } while (choix != 6)
     console.log('Au revoir !');
 }
-
-const menu = () => {
-    let choix;
-    do {
-        console.log('\n     GESTION DES LIVRES');
-        console.log('   1. Lister tous les livres');
-        console.log('   2. Ajouter un livre');
-        console.log('   3. Modifier un livre');
-        console.log('   4. Supprimer un livre');
-        console.log('   5. Rechercher des livres');
-        console.log('   6. Quitter');
-
-        choix = parseInt(question('Entrez votre choix [1-6] : '));
-    } while (choix < 0 || choix > 6);
-    return choix;
-};
 
 main();
