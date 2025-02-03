@@ -1,9 +1,11 @@
 // Olivier Nadeau - IFT1142 Hiver 2025
-// App.js - 29 Janvier
+// App.js - 3 Février
 
 // TODO:
-// - Revoir affichage 
-import * as gestionnaire from './modules/gestions_livre.js';
+// - Revoir affichage *
+
+import { afficherLivres } from './modules/services.js';
+import { tabLivres as livres } from '../app/modules/data/livres.js';
 import { question } from 'readline-sync';
 
 const menu = () => {
@@ -38,10 +40,12 @@ const sousMenu = () => {
 
 function main() {
     let choix;
+    let souschoix;
     do {
         choix = menu();
         switch (choix) {
             case 1: // Lister tous les livres
+                afficherLivres(livres);
                 break;
             case 2: // Ajouter un livre
                 break;
@@ -50,15 +54,18 @@ function main() {
             case 4: // Supprimer un livre
                 break;
             case 5: // Rechercher un livre
-                sousMenu();
+                do souschoix = sousMenu();
+                while (souschoix !== 4);
+                break;
+            case 6: // Quitter
+                console.log('Au revoir !');
                 break;
 
             default:    // Choix non compris
                 console.log('Choix incorrect. Réassayer');
                 break;
         }
-    } while (choix != 6)
-    console.log('Au revoir !');
+    } while (choix != 6);
 }
 
 main();
