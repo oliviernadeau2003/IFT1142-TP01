@@ -4,14 +4,16 @@
 // TODO:
 // - Revoir affichage *
 
-import { afficherLivres } from './modules/services.js';
+import { afficherLivres, trouverProchainId } from './modules/services.js';
 import { tabLivres as livres } from '../app/modules/data/livres.js';
 import { question } from 'readline-sync';
+
+console.log(trouverProchainId(livres));
 
 const menu = () => {
     let choix;
     do {
-        console.log('\n     GESTION DES LIVRES');
+        console.log('\n\n     GESTION DES LIVRES');
         console.log('   1. Lister tous les livres');
         console.log('   2. Ajouter un livre');
         console.log('   3. Modifier un livre');
