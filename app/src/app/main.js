@@ -4,11 +4,9 @@
 // TODO:
 // - Revoir affichage *
 
-import { afficherLivres, trouverProchainId } from './modules/services.js';
+import { afficherLivres, ajouterLivre, modifierLivre } from './modules/services.js';
 import { tabLivres as livres } from '../app/modules/data/livres.js';
 import { question } from 'readline-sync';
-
-console.log(trouverProchainId(livres));
 
 const menu = () => {
     let choix;
@@ -50,8 +48,10 @@ function main() {
                 afficherLivres(livres);
                 break;
             case 2: // Ajouter un livre
+                ajouterLivre(livres);
                 break;
             case 3: // Modifier un livre
+                modifierLivre(livres);
                 break;
             case 4: // Supprimer un livre
                 break;
