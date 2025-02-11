@@ -4,7 +4,7 @@
 // TODO:
 // - Revoir affichage *
 
-import { afficherLivres, ajouterLivre, modifierLivre } from './modules/services.js';
+import { afficherLivres, ajouterLivre, modifierLivre, supprimerLivre } from './modules/services.js';
 import { tabLivres as livres } from '../app/modules/data/livres.js';
 import { question } from 'readline-sync';
 
@@ -54,6 +54,7 @@ function main() {
                 modifierLivre(livres);
                 break;
             case 4: // Supprimer un livre
+                supprimerLivre(livres);
                 break;
             case 5: // Rechercher un livre
                 do souschoix = sousMenu();

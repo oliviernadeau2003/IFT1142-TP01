@@ -22,7 +22,7 @@ export const afficherLivres = (tabLivres) => {
 //* Create
 export const ajouterLivre = (tabLivres) => {
 
-    console.log('Entrée les données du nouveau livre :');
+    console.log('\nEntrée les données du nouveau livre :');
     let id = tabLivres[tabLivres.length - 1].id + 1;
     let titre = question('Titre : ');
     let idAuteur = question('idAuteur : ');
@@ -40,9 +40,10 @@ export const ajouterLivre = (tabLivres) => {
     }
 
     tabLivres.push(nouveauLivre);
-    console.log('Livre ajouté avec succès');
+    console.log('\nLivre ajouté avec succès');
 }
 
+//! GÉRER LES NAN 
 //* Update
 export const modifierLivre = (tabLivres) => {
     let idLivre = parseInt(question('\nId du livre à modifier : '));
@@ -63,13 +64,46 @@ export const modifierLivre = (tabLivres) => {
     let annee = parseInt(question(`Année (${livre.annee}): `));
     let pages = parseInt(question(`Pages (${livre.pages}): `));
     let categorie = question(`Catégorie (${livre.categorie}): `);
+
+    livre.titre = titre;
+    livre.idAuteur = idAuteur;
+    livre.annee = annee;
+    livre.pages = pages;
+    livre.categorie = categorie;
+
+    console.log('\nDonnées modifier avec succès');
 }
 
 //* Delete
-export const supprimerLivre = (tabLivres) => { }
+export const supprimerLivre = (tabLivres) => {
+    let idLivre = parseInt(question('\nId du livre à supprimer : '));
+    let indexLivre = tabLivres.findIndex((livre) => livre.id === idLivre);
+
+    if (indexLivre === -1) {
+        console.log('\nLivre introuvable.');
+        return;
+    }
+
+    let livre = tabLivres[indexLivre]
+    detailsLivre(livre);
+
+    console.log('\nVoulez-vous vraiment supprimer ce livre ?');
+
+    let choix = question("\nVotre choix (O - N) : ");
+    if (choix.toUpperCase() === 'N') {
+        console.log('\nSuppression annulée');
+        return;
+    }
+
+    tabLivres.splice(indexLivre, 1);
+    console.log('\nLivre suprimer avec succès');
+}
+
+// * Recherche
+
 
 // * Autres -
-// export const trouverProchainId = (tabLivres) => { return tabLivres[tabLivres.length - 1].id + 1 }
+export const trouverProchainId = (tabLivres) => { return tabLivres[tabLivres.length - 1].id + 1 }
 
 const detailsLivre = (livre) => {
     console.log("\nInformations du livre :");
