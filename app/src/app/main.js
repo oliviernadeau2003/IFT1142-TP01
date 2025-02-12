@@ -4,7 +4,7 @@
 // TODO:
 // - Revoir affichage *
 
-import { afficherLivres, ajouterLivre, modifierLivre, supprimerLivre } from './modules/services.js';
+import { afficherLivres, ajouterLivre, modifierLivre, supprimerLivre, rechercherParCategorie, rechercherParAnnee, rechercherParAuteur } from './modules/services.js';
 import { tabLivres as livres } from '../app/modules/data/livres.js';
 import { question } from 'readline-sync';
 
@@ -57,7 +57,27 @@ function main() {
                 supprimerLivre(livres);
                 break;
             case 5: // Rechercher un livre
-                do souschoix = sousMenu();
+                do {
+                    souschoix = sousMenu();
+                    switch (souschoix) {
+                        case 1: // Rechercher par catégorie
+                            rechercherParCategorie(livres);
+                            break;
+                        case 2: // Rechercher par année
+                            rechercherParAnnee(livres);
+                            break;
+                        case 3: // Rechercher par auteur
+                            rechercherParAuteur(livres);
+                            break;
+                        case 4: // Quitter
+                            console.log('\nRetour au menu principal');
+                            break;
+
+                        default:    // Choix non compris
+                            console.log('\nChoix incorrect. Réassayer');
+                            break;
+                    }
+                }
                 while (souschoix !== 4);
                 break;
             case 6: // Quitter

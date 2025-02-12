@@ -4,19 +4,29 @@
 import { question } from "readline-sync";
 
 //* Read
-export const afficherLivres = (tabLivres) => {
+export const afficherLivres = (tabLivres, categorie) => {
 
-    console.log('\nLISTE DES LIVRES');
-    console.log('ID   Titre              IdAuteur Année  Pages   Catégorie');
+    if (!categorie) {
+        console.log('\nLISTE DES LIVRES');
+        console.log('ID   Titre              IdAuteur Année  Pages   Catégorie');
+    } else {
+        console.log(`\nLISTE DES LIVRES DE LA CATÉGORIE ${categorie.toUpperCase()}`);
+        console.log('ID   Titre              IdAuteur Année  Pages');
+    }
     console.log('-----------------------------------------------------------------------------------------');
 
-    tabLivres.forEach((livre) => {
-        console.log(`${livre.id} ${livre.titre} ${livre.idAuteur} ${livre.annee} ${livre.pages} ${livre.categorie}`);
-    });
+    if (!categorie) {
+        tabLivres.forEach((livre) => {
+            console.log(`${livre.id} ${livre.titre} ${livre.idAuteur} ${livre.annee} ${livre.pages} ${livre.categorie}`);
+        });
+    } else {
+        tabLivres.forEach((livre) => {
+            console.log(`${livre.id} ${livre.titre} ${livre.idAuteur} ${livre.annee} ${livre.pages}`);
+        });
+    }
 
     console.log('-----------------------------------------------------------------------------------------');
     console.log(`\nNombre de livres : ${tabLivres.length}`);
-
 };
 
 //* Create
@@ -65,11 +75,11 @@ export const modifierLivre = (tabLivres) => {
     let pages = parseInt(question(`Pages (${livre.pages}): `));
     let categorie = question(`Catégorie (${livre.categorie}): `);
 
-    livre.titre = titre;
-    livre.idAuteur = idAuteur;
-    livre.annee = annee;
-    livre.pages = pages;
-    livre.categorie = categorie;
+    livre.titre = titre || livre.titre;
+    livre.idAuteur = idAuteur || livre.idAuteur;
+    livre.annee = annee || livre.annee;
+    livre.pages = pages || livre.pages;
+    livre.categorie = categorie || livre.categorie;
 
     console.log('\nDonnées modifier avec succès');
 }
@@ -100,7 +110,23 @@ export const supprimerLivre = (tabLivres) => {
 }
 
 // * Recherche
+export const rechercherParCategorie = (tabLivres) => {
+    let categorie = question('\nEntrez la catégorie à afficher : ');
+    let resultat = tabLivres.filter((livre) => livre.categorie.localeCompare(categorie) === 0);
+    afficherLivres(resultat, categorie);
+}
 
+export const rechercherParAnnee = (tabLivres) => {
+    let annee = question('\nEntrez l\'année à afficher : ');
+    let resultat = tabLivres.filter((livre) => livre.annee === parseInt(annee));
+    afficherLivres(resultat);
+}
+
+export const rechercherParAuteur = (tabLivres) => {
+    let idAuteur = question('\nEntrez l\'ID de l\'auteur à afficher : ');
+    let resultat = tabLivres.filter((livre) => livre.idAuteur === parseInt(idAuteur));
+    afficherLivres(resultat);
+}
 
 // * Autres -
 export const trouverProchainId = (tabLivres) => { return tabLivres[tabLivres.length - 1].id + 1 }
