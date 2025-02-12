@@ -53,7 +53,6 @@ export const ajouterLivre = (tabLivres) => {
     console.log('\nLivre ajouté avec succès');
 }
 
-//! GÉRER LES NAN 
 //* Update
 export const modifierLivre = (tabLivres) => {
     let idLivre = parseInt(question('\nId du livre à modifier : '));
@@ -65,7 +64,7 @@ export const modifierLivre = (tabLivres) => {
     }
 
     let livre = tabLivres[indexLivre]
-    detailsLivre(livre);
+    afficherDetailsLivre(livre);
 
     console.log('\n* Entrez une nouvelle valeur ou appuyez sur <Entrée> pour conserver la valeur actuelle. *\n');
 
@@ -95,7 +94,7 @@ export const supprimerLivre = (tabLivres) => {
     }
 
     let livre = tabLivres[indexLivre]
-    detailsLivre(livre);
+    afficherDetailsLivre(livre);
 
     console.log('\nVoulez-vous vraiment supprimer ce livre ?');
 
@@ -106,8 +105,10 @@ export const supprimerLivre = (tabLivres) => {
     }
 
     tabLivres.splice(indexLivre, 1);
-    console.log('\nLivre suprimer avec succès');
+    console.log('\nLivre supprimer avec succès');
 }
+
+// * Fin des fonctions CRUD -
 
 // * Recherche
 export const rechercherParCategorie = (tabLivres) => {
@@ -131,7 +132,7 @@ export const rechercherParAuteur = (tabLivres) => {
 // * Autres -
 export const trouverProchainId = (tabLivres) => { return tabLivres[tabLivres.length - 1].id + 1 }
 
-const detailsLivre = (livre) => {
+const afficherDetailsLivre = (livre) => {
     console.log("\nInformations du livre :");
     for (let prop in livre) {
         console.log(`${prop} : ${livre[prop]}`);
