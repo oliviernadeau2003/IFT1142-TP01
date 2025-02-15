@@ -1,5 +1,5 @@
 // Olivier Nadeau - IFT1142 Hiver 2025
-// main.js - 12 Février
+// main.js - 15 Février
 
 // TODO:
 // - Revoir affichage *
