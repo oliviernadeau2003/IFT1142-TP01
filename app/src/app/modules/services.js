@@ -7,25 +7,40 @@ import { question } from "readline-sync";
 export const afficherLivres = (tabLivres, categorie) => {
 
     if (!categorie) {
-        console.log('\nLISTE DES LIVRES');
-        console.log('ID   Titre              IdAuteur Année  Pages   Catégorie');
+        console.log('\n');
+        console.log("LISTE DES LIVRES".padStart(63));
+        console.log("ID   Titre".padEnd(65) + "IdAuteur  Année  Pages  Catégorie");
     } else {
-        console.log(`\nLISTE DES LIVRES DE LA CATÉGORIE ${categorie.toUpperCase()}`);
-        console.log('ID   Titre              IdAuteur Année  Pages');
+        console.log('\n');
+        console.log(`LISTE DES LIVRES DE LA CATÉGORIE ${categorie.toUpperCase()}`.padStart(63));
+        console.log("ID   Titre".padEnd(65) + "IdAuteur  Année  Pages");
     }
-    console.log('-----------------------------------------------------------------------------------------');
+    console.log("-".repeat(105));
 
     if (!categorie) {
         tabLivres.forEach((livre) => {
-            console.log(`${livre.id} ${livre.titre} ${livre.idAuteur} ${livre.annee} ${livre.pages} ${livre.categorie}`);
+            console.log(
+                livre.id.toString().padEnd(5) +
+                livre.titre.padEnd(60) +
+                livre.idAuteur.toString().padEnd(10) +
+                livre.annee.toString().padEnd(7) +
+                livre.pages.toString().padEnd(7) +
+                livre.categorie.padEnd(15)
+            );
         });
     } else {
         tabLivres.forEach((livre) => {
-            console.log(`${livre.id} ${livre.titre} ${livre.idAuteur} ${livre.annee} ${livre.pages}`);
+            console.log(
+                livre.id.toString().padEnd(5) +
+                livre.titre.padEnd(60) +
+                livre.idAuteur.toString().padEnd(10) +
+                livre.annee.toString().padEnd(7) +
+                livre.pages.toString().padEnd(7)
+            );
         });
     }
 
-    console.log('-----------------------------------------------------------------------------------------');
+    console.log("-".repeat(105));
     console.log(`\nNombre de livres : ${tabLivres.length}`);
 };
 
