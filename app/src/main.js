@@ -5,7 +5,7 @@
 // - Revoir affichage *
 
 import { afficherLivres, ajouterLivre, modifierLivre, supprimerLivre, rechercherParCategorie, rechercherParAnnee, rechercherParAuteur } from './modules/services.js';
-import { tabLivres as livres } from '../app/modules/data/livres.js';
+import { tabLivres as livres } from './modules/data/livres.js';
 import { question } from 'readline-sync';
 
 const menu = () => {

@@ -1,7 +1,7 @@
 {
   "name": "ift1142-tp01",
   "version": "1.0.0",
-  "main": "./app/src/app/main.js",
+  "main": "./app/src/main.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
